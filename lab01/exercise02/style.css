@@ -7,18 +7,43 @@ body {
 }
 
 /*
-Add some style blocks below this line to style the cards.
-Feel free to borrow from Exercise 1.
+Add some style blocks below this line to style the card.
 */
-
-
-/* Tablet Media Query */
-@media only screen and (max-width: 1000px) {
-
+section {
+    box-sizing: border-box;
+    border: solid 1px #CCC; 
+    width: 350px;
+    height: 150%;   
+    margin: 10px;
+    padding-bottom: 20px;
 }
 
-/* Mobile Phone Media Query */
-@media only screen and (max-width: 600px) {
+section h2, section p, section button {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
-    
+section img {
+    width: 100%;
+}
+
+/*
+Make a flex box -- defaults to putting everything in a row,
+which is what we want for Desktop
+*/
+main {
+    display: flex;
+    /*justify-content: center;*/ 
+}
+
+/* Tablet Media Query */
+@media (max-width: 1024px){
+    main {
+        flex-wrap: wrap;
+    }
+
+    /* Remove extra whitespace from right of smaller windows */
+    section {
+        width: 100%;
+    }
 }
