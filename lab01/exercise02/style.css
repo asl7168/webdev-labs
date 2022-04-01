@@ -37,9 +37,16 @@ main {
 }
 
 /* Tablet Media Query */
-@media (max-width: 1024px){
+@media only screen and (max-width: 1000px){
     main {
         flex-wrap: wrap;
+    }
+}
+
+/* Mobile Phone Media Query */
+@media only screen and (max-width: 600px){
+    main {
+        flex-direction: column; /* want everything in col */
     }
 
     /* Remove extra whitespace from right of smaller windows */
