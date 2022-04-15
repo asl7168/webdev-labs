@@ -45,10 +45,10 @@ ORDER BY COUNT(*) DESC;
 
 
 -- Exercise 8
-SELECT posts.id, posts.image_url, posts.user_id, users.username, users.first_name, users.last_name
-FROM posts 
-JOIN users ON posts.user_id = users.id
-WHERE posts.user_id = 12 OR posts.user_id = 26;
+SELECT p.id, p.image_url, p.user_id, u.username, u.first_name, u.last_name
+FROM posts AS p
+JOIN users AS u ON p.user_id = u.id
+WHERE p.user_id = 12 OR p.user_id = 26;
 
 
 
