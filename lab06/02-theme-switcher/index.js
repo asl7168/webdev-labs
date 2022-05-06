@@ -6,10 +6,10 @@
        based on the button that was clicked.
 */
 
-const makeDefault = () => {document.querySelector("body").removeAttribute("class");};
-const makeOcean = () => {document.querySelector("body").className = "ocean";};
-const makeDesert = () => {document.querySelector("body").className = "desert";};
-const makeHighContrast = () => {document.querySelector("body").className = "high-contrast";};
+const makeDefault = () => { document.querySelector("body").removeAttribute("class"); }
+const makeOcean = () => { document.querySelector("body").className = "ocean"; }
+const makeDesert = () => { document.querySelector("body").className = "desert"; }
+const makeHighContrast = () => { document.querySelector("body").className = "high-contrast"; }
 
 
 document.querySelector("#default").addEventListener("click", makeDefault);

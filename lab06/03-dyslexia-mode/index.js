@@ -17,7 +17,7 @@ const toggleDyslexiaMode = () =>
   else { body.className = "dyslexia-mode"; }
   isDyslexic = !isDyslexic; // now a boolean: if previously evaluated as false, now true (and vice-versa)
 
-  window.localStorage.setItem("dyslexic", String(isDyslexic))
+  window.localStorage.setItem("dyslexic", String(isDyslexic));
 }
 
 document.querySelector("#dyslexia-toggle").addEventListener("click", toggleDyslexiaMode);
