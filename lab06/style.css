@@ -112,3 +112,25 @@ button {
 .high-contrast button {
     color: black;
 }
+
+.dyslexia-mode {
+    font: "overpass";
+    font-variant-ligatures: none;
+    font-weight: 600;
+    font-size: 150%;
+    letter-spacing: 0.35ch;
+    word-spacing: 1.225ch;
+}
+
+.dyslexia-mode p {
+    margin-top: 3.5em;
+}
+
+.dyslexia-mode button, .dyslexia-mode h1, .dyslexia-mode h2, .dyslexia-mode strong {
+    color: #000000;
+}
+
+.dyslexia-mode .content {
+    padding: 0px 300px;
+    line-height: 1.5;
+}
