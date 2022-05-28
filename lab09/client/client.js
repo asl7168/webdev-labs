@@ -155,15 +155,29 @@ const showAllUsers = (data) => {
     qs("#users-list ul").innerHTML = activeUsersHTML
 }
 
-// const addUser = (data) => {
-//     const userToAdd = data.active_users[-1]
-// }
+const addUser = (data) => {
+    const activeUsers = data.active_users
+    let userToAdd = activeUsers[activeUsers.length-1]
+    if (username !== userToAdd) { userToAdd += " has" } 
+    else { userToAdd = "You have" }
+    
+    qs("#update").innerHTML = `<div role="alert">${userToAdd} joined the chat.</div>`
+}
+
+const removeUser = (data) => {
+    console.log(data)
+    const userToRemove = data.user_left
+    data.active_users = data.active_users.map(user => { 
+        if(user !== userToRemove) { return user }
+    })
+    qs("#update").innerHTML = `<div role="alert">${userToRemove} has left the chat.</div>`
+}
 
 const addMessage = (data) => {
     let rightOrLeft = ""
     if (data.username === username) { rightOrLeft = `"right"><strong>You:</strong>` }
     else { rightOrLeft = `"left"><strong>${data.username}:</strong>` }
-    const messageHTML = `<p id="message" class=` + rightOrLeft + `${data.text}</p>`
+    const messageHTML = `<div role="alert"><div class=` + rightOrLeft + `<span class="sr-only">said</span> ${data.text}</div></div>`
 
     qs("#chat").insertAdjacentHTML("beforeend", messageHTML)
 }
@@ -171,19 +185,12 @@ const addMessage = (data) => {
 const handleServerMessage = ev => {
     const data = JSON.parse(ev.data);
     if (data.type === "login") {
-        // console.log('A user has just connected:');
-        // console.log(data);
-        // const firstLogin = document.querySelectorAll("#users-list li").length === 0
-        // if (firstLogin) { showAllUsers(data) }
+        addUser(data)
         showAllUsers(data)
-        // else { console.log("addUser")}
     } else if (data.type === "disconnect") {
-        // console.log('A user has just disconnected:');
-        // console.log(data);
+        removeUser(data)
         showAllUsers(data)
     } else if (data.type === "chat") {
-        console.log('A user has just sent a chat message:');
-        console.log(data);
         addMessage(data)
     } else {
         console.error("Message type not recognized.");
