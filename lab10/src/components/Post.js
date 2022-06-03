@@ -1,13 +1,27 @@
-import React from 'react';
+import React from "react";
+import { getHeaders } from "../utils"
+import LikeButton from "./LikeButton";
+import BookmarkButton from "./BookmarkButton";
 
 class Post extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {post: this.props.model}
+        this.redrawPost = this.redrawPost.bind(this)
     }
 
-    render = () => {
+    async redrawPost() {
+        const url = `/api/posts/${this.state.post.id}`
+        const response = await fetch(url, {
+            method: "GET",
+            headers: getHeaders()
+        })
+        const post = await response.json()
+        this.setState({post: post})
+    }
+
+    render() {
         const post = this.state.post
         if (!post) { return (<div></div>)}
         else {
@@ -26,7 +40,7 @@ class Post extends React.Component {
 
                 if (postCaption.length > 30) {
                     postCaption = postCaption.slice(0, 30).join(" ") + "..."
-                    moreCaption = "<button>more</button>"
+                    moreCaption = <button>more</button>
                 } else {
                     postCaption = post.caption
                 }
@@ -52,22 +66,13 @@ class Post extends React.Component {
                         <div className="interactions">
                             <div id="options">
                                 <div id="left-options">
-                                    {/*
-                                    NEED TO REPLACE WITH LIKE COMPONENT
-                                    <button aria-label="like" aria-checked="${post.current_user_like_id ? "true" : "false"}" data-card-id="${postID}" data-like-id="${post.current_user_like_id || ""}" onClick="toggleLike(event)"><i className="${post.current_user_like_id ? "fas" : "far"} fa-heart"></i></button>
-                                    */}
+                                    <LikeButton postId={postID} likeId={post.current_user_like_id} redrawPost={this.redrawPost} />
                                     <button><i className="far fa-comment"></i></button>
                                     <button><i className="far fa-paper-plane"></i></button>
                                 </div>
-                                {/*
-                                NEED TO REPLACE WITH BOOKMARK COMPONENT
-                                <button aria-label="bookmark" aria-checked={post.current_user_bookmark_id ? "true" : "false"} data-card-id={postID} data-bookmark-id={post.current_user_bookmark_id || ""} onClick="toggleBookmark(event)"><i className={(post.current_user_bookmark_id ? "fas" : "far") + "fa-bookmark"}></i></button>
-                                */}
+                                <BookmarkButton postId={postID} bookmarkId={post.current_user_bookmark_id} redrawPost={this.redrawPost} />
                             </div>
-                            {/*
-                            WILL ALSO BE AFFECTED BY LIKE COMPONENT?
-                            <div id="likes"><p>${post.likes.length} Likes</p></div>
-                            */}
+                            <div id="likes"><p>{post.likes.length} Likes</p></div>
                             <div id="caption">
                                 <p><span>{postCaption !== "" ? post.user.username : ""} </span>
                                     {postCaption}
@@ -87,7 +92,7 @@ class Post extends React.Component {
                                 <button aria-label="post comment from add-comment" data-card-id={postID} /*onClick="addComment(event)"*/>Post</button>
                             </div>
                         </div>
-            </div>)
+                    </div>)
         }
     }
 }

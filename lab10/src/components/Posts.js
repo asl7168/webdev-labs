@@ -1,5 +1,5 @@
-import React from 'react';
-import { getHeaders } from '../utils';
+import React from "react";
+import { getHeaders } from "../utils";
 import Post from "./Post";
 
 class Posts extends React.Component {
@@ -12,7 +12,7 @@ class Posts extends React.Component {
 
     componentDidMount = () => { this.fetchPosts() }
 
-    async fetchPosts() {
+    fetchPosts = async () => {
         const url = "/api/posts"
         const response = await fetch(url, {
             method: "GET",

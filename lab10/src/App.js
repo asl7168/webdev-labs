@@ -5,7 +5,6 @@ import Stories from './components/Stories';
 import Suggestions from './components/Suggestions';
 import Posts from './components/Posts';
 
-{/* TODO: Break up the HTML below into a series of React components. */}
 class App extends React.Component {  
 
     render () {
@@ -37,7 +36,6 @@ class App extends React.Component {
                     <Stories />
                 </header>
                 <div id="posts">
-                    Posts
                     <Posts />
                 </div>
             </main>
