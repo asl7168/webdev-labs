@@ -1,0 +1,430 @@
+:root {
+    --interact-blue: #0739ED;
+    --good-grey: #3c3c3c;
+}
+
+body * {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: lightgrey;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Comfortaa';
+}
+
+a {
+    color: var(--interact-blue);
+    text-decoration: none;
+}
+
+nav {
+    background: white;
+    padding: 10px 25px;
+    z-index: 1000;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.user-nav {
+    padding: 10px 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.user-nav * {
+    padding: 0 5px;
+}
+
+.signout {
+    color: var(--interact-blue);
+}
+
+main {
+    top: 65px;
+    margin-left: 17vw;
+    position: absolute;
+    width: 45vw;
+    min-width: 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.stories {
+    background: white;
+    display: flex;
+    padding: 10px;
+    width: inherit;
+    min-width: inherit;
+    height: 90px;
+    flex-flow: row nowrap;
+    align-items: center;
+    overflow: auto hidden;
+    white-space: nowrap;
+}
+
+#story {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 0px 10px;
+    width: 80px;
+}
+
+#story img {
+    border: 3px solid lightgrey;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+#story p {
+    width: inherit;
+    color: var(--good-grey);
+    font-size: 10pt;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cards {
+    display: flex;
+    flex-flow: column nowrap;
+    width: inherit;
+    min-width: inherit;
+    margin-top: 7px;
+}
+
+.card {
+    background: white;
+    margin-bottom: 28px;
+}
+
+.card > header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.card > header i {
+    font-size: 10pt;
+}
+
+.card * button {
+    background: transparent;
+    border: 0;
+}
+
+.card > img {
+    width: 100%;
+}
+
+.card p {
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.interactions {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+}
+
+.interactions > * {
+    margin-bottom: 5px;
+}
+
+.interactions div, .interactions p {
+    padding: 0 10px;
+}
+
+.interactions * button {
+    font-size: 12pt;
+    color: var(--interact-blue)
+}
+
+#options {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#options * button, #options * i {
+    background: transparent;
+    border: 0;
+    font-size: 20pt;
+    color: black;
+}
+
+#left-options * {
+    padding-right: 5px;
+}
+
+#options * button .fas.fa-heart {
+    color: red;
+}
+
+#likes {
+    font-weight: bold;
+}
+
+#caption p span {
+    font-weight: bold;
+}
+
+.comments * {
+    margin-bottom: 5px;
+}
+
+.comments a {
+    display: block;
+    margin-left: 20px;
+}
+
+#comment span {
+    font-weight: bold;
+}
+
+#when {
+    font-size: 10pt;
+    color: var(--good-grey);
+}
+
+.react {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.react * {
+    padding-right: 5px;
+    font-size: 12pt;
+}
+
+.react input[type=text] {
+    border: none;
+}
+
+#compose {
+    display: flex;
+    align-items: center;
+}
+
+#compose p {
+    color: var(--good-grey);
+}
+
+.modal-bg {
+    background: rgba(50, 50, 50, 0.8);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1999;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: 86vw;
+    height: auto;
+    max-height: 80vh;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.modal > img {
+    width: 65vw;
+}
+
+.modal-close {
+    align-self: flex-start;
+    justify-content: flex-end;
+    padding-top: 80px;
+    padding-left: 20px;
+    color: white;
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.modal-right {
+    width: 34vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-left: solid 1px var(--good-grey);
+}
+
+.modal-header {
+    background: whitesmoke;
+    border-bottom: solid 1px var(--good-grey); 
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-header > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
+
+.modal-header > h3 {
+    padding-left: 10px;
+}
+
+.modal-comments {
+    padding-left: 15px;
+}
+
+#modal-comment {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+#modal-comment > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+#modal-comment-info {
+    width: 80%;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#modal-comment-info p {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 5px;   
+    padding-bottom: 5px; 
+}
+
+#modal-comment-info span {
+    font-weight: bold;
+}
+
+aside {
+    top: 65px;
+    right: 0;
+    width: 32vw;
+    position: fixed;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+aside * {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.suggestions * {
+    margin-right: inherit;
+    margin-bottom: inherit;
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+}
+
+aside h3 {
+    color: var(--good-grey);
+    margin-bottom: 8px;
+}
+
+.user-info {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.user-info img {
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+}
+
+.regfont {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.recommended {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.recommended img {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+.recommended button {
+    background-color: lightgrey;
+    border: none;
+    color: var(--interact-blue);
+}
+
+.recommended-text {
+    width: 130px;
+}
+
+#suggested-user {
+    font-weight: bold;
+}
+
+#suggested-for-you {
+    color: var(--good-grey);
+    font-size: 10pt;
+}
+
+.not-important {
+    height: 10000px;
+}
+
+/* Mobile Phone Media Query */
+@media only screen and (max-width: 900px) {
+    aside {
+        display: none;
+    }
+
+    main {
+        width: 90vw;
+        margin: 0 5vw;
+    }
+}
